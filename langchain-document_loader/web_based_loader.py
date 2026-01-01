@@ -1,6 +1,11 @@
-# use lazy loading to load multiple pdf files from a directory if its huge 
-# makes a new doc object for every row in the csv
-from langchain_community.document_loaders import DirectoryLoader, CSVLoader
+# Web based document loader
+# reads web pages and converts them into document objects
+# it reads as a list of document objects
+# every document object has page content and metadata
+#uses beautifulsoup4 and requests libraries to fetch and parse web pages    
+# if js heavy use selenium or playwright based loader instead
+
+from langchain_community.document_loaders import PyPDFLoader, WebBaseLoader
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
 import os
 import sys
@@ -18,7 +23,7 @@ llm = HuggingFacePipeline.from_model_id(
 )
 
 model = ChatHuggingFace(llm=llm)
-loader = CSVLoader(file_path="langchain-document_loader/Social_Network_Ads.csv")
+loader= WebBaseLoader("https://en.wikipedia.org/wiki/Brigitte_Bardot")
 documents = loader.load()
-print(documents[0])
-print(len(documents))   
+print(documents)    
+print(len(documents))
