@@ -4,6 +4,7 @@
 # every document object has page content and metadata
 #not great for scanned pdfs, better to use ocr loaders for that
 # used when only text extraction from pdfs is needed
+# use lazy loading to load multiple pdf files from a directory if its huge 
 
 print("Langchain PDF Loader Example")
 from langchain_community.document_loaders import PyPDFLoader
@@ -14,11 +15,6 @@ import time
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 os.environ['HF_HOME'] = 'D:/huggingface_cache'
-
-
-
-
-print("[DEBUG] Loading model...", flush=True)
 llm = HuggingFacePipeline.from_model_id(
     model_id='TinyLlama/TinyLlama-1.1B-Chat-v1.0',
     task='text-generation',

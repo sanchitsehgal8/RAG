@@ -1,0 +1,1 @@
+# use lazy loading to load multiple pdf files from a directory if its huge 

@@ -1,6 +1,7 @@
 # reads text files and converts them into document objects
 # it reads as a list of document objects
 # every document object has page content and metadata
+# use lazy loading to load multiple pdf files from a directory if its huge 
 print("Langchain Text Loader Example")
 from langchain_community.document_loaders import TextLoader
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline
